@@ -1679,6 +1679,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                 'YouTube said: %s' % unavailable_message, expected=True, video_id=video_id)
 
         if 'account_playback_token' not in video_info and 'token' not in video_info:
+            video_info['token'] = video_info['account_playback_token']
             if 'reason' in video_info:
                 if 'The uploader has not made this video available in your country.' in video_info['reason']:
                     regions_allowed = self._html_search_meta(
@@ -1696,7 +1697,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                     expected=True, video_id=video_id)
             else:
                 raise ExtractorError(
-                    '"token!" parameter not in video info for unknown reason',
+                    '"token!!" parameter not in video info for unknown reason',
                     video_id=video_id)
 
         if video_info.get('license_info'):
