@@ -1696,7 +1696,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                     expected=True, video_id=video_id)
             else:
                 raise ExtractorError(
-                    '"token" parameter not in video info for unknown reason',
+                    '"token!" parameter not in video info for unknown reason',
                     video_id=video_id)
 
         if video_info.get('license_info'):
